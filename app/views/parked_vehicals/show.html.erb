@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Parking slot:</strong>
+  <%= @parked_vehical.parking_slot_id %>
+</p>
+
+<p>
+  <strong>Vehical no plate:</strong>
+  <%= @parked_vehical.vehical_no_plate %>
+</p>
+
+<p>
+  <strong>Parking start time:</strong>
+  <%= @parked_vehical.parking_start_time %>
+</p>
+
+<p>
+  <strong>Parking end time:</strong>
+  <%= @parked_vehical.parking_end_time %>
+</p>
+
+<%= link_to 'Edit', edit_parked_vehical_path(@parked_vehical) %> |
+<%= link_to 'Back', parked_vehicals_path %>

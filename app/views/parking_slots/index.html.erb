@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Parking Slots</h1>
+
+<table>
+  <thead>
+    <tr style="background-color: #999999">
+      <th>Sequence number</th>
+      <th>Available</th>
+      <th>Auto release time</th>
+      <th colspan="3">Release action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parking_slots.each do |parking_slot| %>
+      <tr style="background-color: <% unless parking_slot.available %>#e29e9e <% else %>#8bbc9a<% end %>">
+        <td><%= parking_slot.sequence_number %></td>
+        <td><%= parking_slot.available %></td>
+        <td><%= parking_slot.auto_release_time %></td>
+        <td><%= link_to 'ReleaseNow' , release_parking_path(parking_slot.parked_vehical.id.to_i), data: { confirm: 'Are you sure?' } unless parking_slot.available %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Parked Vehical Details', parked_vehicals_path, :style => "float:right;margin-left:25px;"%> <%= link_to 'Allot Parking', allot_parking_path, :style => "float:right"%>
+<br>
+
+<%= link_to 'New Parking Slot', new_parking_slot_path %>

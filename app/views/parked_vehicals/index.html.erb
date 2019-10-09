@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Parked Vehicals</h1>
+
+<table>
+  <thead>
+    <tr style="background-color: #999999">
+      <th>Parking slot</th>
+      <th>Vehical no plate</th>
+      <th>Parking start time</th>
+      <th>Parking end time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parked_vehicals.each do |parked_vehical| %>
+    <tr style="background-color: <% unless parked_vehical.parking_end_time %>#e29e9e <% else %>#8bbc9a<% end %>">
+        <td><%= parked_vehical.parking_slot.sequence_number %></td>
+        <td><%= parked_vehical.vehical_no_plate %></td>
+        <td><%= parked_vehical.parking_start_time %></td>
+        <td><%= parked_vehical.parking_end_time %></td>
+        <td><%= link_to 'ReleaseNow' , release_parking_path(parked_vehical.id.to_i), data: { confirm: 'Are you sure?' } unless parked_vehical.parking_end_time %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Parking Slots List', parking_slots_path %>

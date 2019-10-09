@@ -1,0 +1,37 @@
+<%= form_with(model: parked_vehical, local: true) do |form| %>
+  <% if parked_vehical.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(parked_vehical.errors.count, "error") %> prohibited this parked_vehical from being saved:</h2>
+
+      <ul>
+      <% parked_vehical.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :parking_slot_id %>
+    <%= form.number_field :parking_slot_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vehical_no_plate %>
+    <%= form.text_area :vehical_no_plate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :parking_start_time %>
+    <%= form.datetime_select :parking_start_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :parking_end_time %>
+    <%= form.datetime_select :parking_end_time %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
